@@ -1,3 +1,7 @@
+# Sample
+
+A sample project to test css plus compiler
+
 # Usage
 
 First:
