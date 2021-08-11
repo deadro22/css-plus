@@ -4,7 +4,7 @@
   "description": "cssplus is an experimental css extension",
   "main": "index.js",
   "bin": {
-    "cssp": "./index.js"
+    "cssp": "./cli/cli.js"
   },
   "repository": {
     "type": "git",
@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/deadro22/css-plus/issues"
   },
-  "homepage": "https://github.com/deadro22/css-plus#readme"
+  "homepage": "https://github.com/deadro22/css-plus#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "cssp-compiler": "0.0.2"
+  }
 }
