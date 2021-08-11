@@ -1,11 +1,13 @@
-const Lexer = require("./lexer");
-const Parser = require("./parser");
-const Interpreter = require("./interpreter");
+const Lexer = require("./src/lexer");
+const Parser = require("./src/parser");
+const Interpreter = require("./src/interpreter");
 
-module.exports = function (source) {
-  const sourceTokens = Lexer.readSource(source);
-  const { AST } = Parser.parseContent(sourceTokens);
-  const output = Interpreter.run(AST);
+module.exports = class Compiler {
+  static compile(source) {
+    const sourceTokens = Lexer.readSource(source);
+    const { AST } = Parser.parseContent(sourceTokens);
+    const output = Interpreter.run(AST);
 
-  return output;
+    return output;
+  }
 };
