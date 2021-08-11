@@ -1,0 +1,11 @@
+{
+  "name": "cssplus",
+  "version": "0.0.1",
+  "description": "cssplus is an experimental css extesion",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "author": "ElRivaa",
+  "license": "ISC"
+}

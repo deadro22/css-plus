@@ -1,0 +1,59 @@
+_background: red;
+_color: blue;
+_marg: 1em;
+_moataz: black;
+
+flexible(
+    background-color:red;
+    margin:_marg
+)
+customButton(
+  background-color:black;
+  color:red;
+  padding:_marg;
+  border-radius:1em;
+)
+
+main{
+  &flexible;
+  div{
+    background:black;
+    h1{
+      color:red;
+      p{
+        &flexible;
+      }
+    }
+  }
+}
+
+.lo{
+  &flexible;
+  #hey{
+    .lop{
+      &flexible;
+    }
+  }
+}
+
+#lo{
+  background:_background;
+  margin:100px;
+}
+
+#mo{
+  background-color:_moataz;
+  div{
+    margin:_marg;
+    .lo{
+      padding:1em;
+    }
+  }
+}
+
+.moataz{
+  &customButton;
+  div{
+    &customButton;
+  }
+}
