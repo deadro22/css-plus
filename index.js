@@ -1,6 +1,6 @@
 const fs = require("fs");
-const compiler = require("../compiler/compiler");
-const source = fs.readFileSync(__dirname + "/style.cssp").toString();
+const Compiler = require("cssp-compiler");
+const source = fs.readFileSync(__dirname + "/src/style.cssp").toString();
 
-const output = compiler(source);
-fs.writeFileSync(__dirname + "/style.css", output);
+const output = Compiler.compile(source);
+fs.writeFileSync(__dirname + "/src/style.css", output);

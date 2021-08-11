@@ -1,0 +1,50 @@
+/* Generated Cssp */
+main {
+  background-color: red;
+  margin: 1em;
+}
+main div {
+  background: black;
+}
+main div h1 {
+  color: red;
+}
+main div h1 p {
+  background-color: red;
+  margin: 1em;
+}
+.lo {
+  background-color: red;
+  margin: 1em;
+}
+.lo #hey {
+}
+.lo #hey .lop {
+  background-color: red;
+  margin: 1em;
+}
+#lo {
+  background: red;
+  margin: 100px;
+}
+#mo {
+  background-color: black;
+}
+#mo div {
+  margin: 1em;
+}
+#mo div .lo {
+  padding: 1em;
+}
+.moataz {
+  background-color: black;
+  color: red;
+  padding: 1em;
+  border-radius: 1em;
+}
+.moataz div {
+  background-color: black;
+  color: red;
+  padding: 1em;
+  border-radius: 1em;
+}
