@@ -10,14 +10,33 @@ const logError = (err) => {
   process.exit(0);
 };
 
-const command = [process.argv[2], process.argv[3]];
+const outputToFile = (output, outputFileName, filename, log) => {
+  fs.writeFile(dir + `/${outputFileName}`, output, (err) => {
+    if (err) throw err;
+    log &&
+      console.log(
+        chalk.greenBright.bold(
+          filename,
+          "compiled successfully into",
+          outputFileName
+        )
+      );
+  });
+};
+
+const command = [process.argv[2], process.argv[3], process.argv[4]];
+
 let filename = "style.cssp";
 
-if (command[0]) {
+if (command[0] && !command[0].startsWith("-")) {
   filename = command[0];
 }
 
-if (command[0] && command[0].split(".").pop() !== "cssp") {
+if (
+  command[0] &&
+  !command[0].startsWith("-") &&
+  command[0].split(".").pop() !== "cssp"
+) {
   logError("Only cssp extension is supported");
 }
 
@@ -29,19 +48,28 @@ fs.readFile(dir + `/${filename}`, (err, data) => {
   }
 
   const dt = data.toString();
-  const output = Compiler.compile(dt);
   let outputFileName = "style.css";
 
-  if (command[1]) outputFileName = command[1];
-
-  fs.writeFile(dir + `/${outputFileName}`, output, (err) => {
-    if (err) throw err;
+  if (command.includes("-w")) {
     console.log(
       chalk.greenBright.bold(
-        filename,
-        "compiled successfully into",
-        outputFileName
+        `Watching file ${filename}\nOutput: ${outputFileName}`
       )
     );
-  });
+    fs.watchFile(
+      dir + `/${filename}`,
+      { persistent: true, interval: 500 },
+      (curr, prev) => {
+        const ct = fs.readFileSync(dir + `/${filename}`, "utf8");
+        const output = Compiler.compile(ct);
+        outputToFile(output, outputFileName, filename);
+      }
+    );
+  } else {
+    const output = Compiler.compile(dt);
+
+    if (command[1]) outputFileName = command[1];
+
+    outputToFile(output, outputFileName, filename, true);
+  }
 });
