@@ -1,0 +1,26 @@
+{
+  "name": "css-plus",
+  "version": "0.0.1",
+  "description": "cssplus is an experimental css extension",
+  "main": "index.js",
+  "bin": {
+    "cssp": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deadro22/css-plus.git"
+  },
+  "keywords": [
+    "css",
+    "extension",
+    "style",
+    "preprocessor",
+    "css-plus"
+  ],
+  "author": "ElRivaa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deadro22/css-plus/issues"
+  },
+  "homepage": "https://github.com/deadro22/css-plus#readme"
+}
