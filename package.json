@@ -1,0 +1,14 @@
+{
+  "name": "cssp-compiler",
+  "version": "0.0.1",
+  "description": "the css plus preprocessor compiler",
+  "main": "compiler.js",
+  "keywords": [
+    "compiler",
+    "css",
+    "preprocessor",
+    "css-plus"
+  ],
+  "author": "ElRivaa",
+  "license": "MIT"
+}
