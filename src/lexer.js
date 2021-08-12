@@ -98,6 +98,10 @@ class CsspLexer {
           this.next();
           break;
 
+        case this.character === CsspDictionary.Syntax.STATEMENT_END:
+          this.next();
+          break;
+
         default:
           throw new Error(
             `Illegal character ${JSON.stringify(this.character)} at line ${

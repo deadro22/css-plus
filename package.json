@@ -1,6 +1,6 @@
 {
   "name": "cssp-compiler",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "the css plus preprocessor compiler",
   "main": "compiler.js",
   "types": "index.d.ts",
