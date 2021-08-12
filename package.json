@@ -1,6 +1,6 @@
 {
   "name": "cssp-loader",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "The main css plus webpack loader",
   "main": "index.js",
   "repository": {
@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/deadro22/css-plus#readme",
   "dependencies": {
-    "cssp-compiler": "^0.0.3"
+    "cssp-compiler": "^0.0.4"
   }
 }
