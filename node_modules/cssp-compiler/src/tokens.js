@@ -7,6 +7,7 @@ const CsspDictionary = {
     VAR_IDENT: "_",
     VAL_EQ: ":",
     STATEMENT_END: ";",
+    ARG_SEPARATOR: ",",
     RPAR: ")",
     LPAR: "(",
     TEMP_CALL: "&",
@@ -24,6 +25,25 @@ const CsspDictionary = {
     SELECTOR: "SELECTOR",
     CLASS_SELECTOR: "CLASS_SELECTOR",
     ID_SELECTOR: "ID_SELECTOR",
+    FUNC: "FUNC",
+    ARG: "ARG",
+  },
+  DEF: {
+    FUNC: [
+      "rgb",
+      "rgba",
+      "filter",
+      "transform",
+      "translate",
+      "rotate",
+      "scale",
+      "attr",
+      "calc",
+      "hsl",
+      "hsla",
+      "linear-gradient",
+      "radial-gradient",
+    ],
   },
 };
 

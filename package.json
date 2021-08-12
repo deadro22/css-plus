@@ -1,6 +1,6 @@
 {
   "name": "css-pluss",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "cssplus is an experimental css extension",
   "main": "index.js",
   "bin": {
