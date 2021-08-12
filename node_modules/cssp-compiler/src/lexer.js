@@ -93,6 +93,11 @@ class CsspLexer {
           this.next();
           break;
 
+        case this.character === CsspDictionary.Syntax.ARG_SEPARATOR:
+          this.addToken(CsspDictionary.Syntax.ARG_SEPARATOR, null);
+          this.next();
+          break;
+
         default:
           throw new Error(
             `Illegal character ${JSON.stringify(this.character)} at line ${
@@ -108,6 +113,7 @@ class CsspLexer {
     let ln = this.line;
     let col = this.col;
     let prop = this.character;
+    let pchar;
     this.next();
 
     while (
@@ -117,9 +123,13 @@ class CsspLexer {
         CsspDictionary.Syntax.LPAR,
         CsspDictionary.Syntax.SELECTOR_L,
         CsspDictionary.Syntax.STATEMENT_END,
-      ].includes(this.character)
+        CsspDictionary.Syntax.ARG_SEPARATOR,
+        CsspDictionary.Syntax.RPAR,
+      ].includes(this.character) &&
+      !WHITESPACE.includes(this.character)
     ) {
       prop += this.character;
+      pchar = this.character;
       this.next();
     }
 
@@ -129,16 +139,40 @@ class CsspLexer {
       case this.character === CsspDictionary.Syntax.VAL_EQ:
         type = CsspDictionary.Types.PROP_NAME;
         break;
+
       case this.character === CsspDictionary.Syntax.LPAR:
-        type = CsspDictionary.Types.TEMP_DEF;
+        if (CsspDictionary.DEF.FUNC.includes(prop)) {
+          type = CsspDictionary.Types.FUNC;
+        } else {
+          type = CsspDictionary.Types.TEMP_DEF;
+        }
         break;
+
       case this.character === CsspDictionary.Syntax.SELECTOR_L:
         type = CsspDictionary.Types.SELECTOR;
         break;
+
       case this.character === CsspDictionary.Syntax.STATEMENT_END:
         type = CsspDictionary.Types.PROP_VAL;
         this.next();
         break;
+
+      case WHITESPACE.includes(this.character):
+        this.next();
+        if (this.character === CsspDictionary.Syntax.VAL_EQ) {
+          type = CsspDictionary.Types.PROP_NAME;
+        } else {
+          type = CsspDictionary.Types.PROP_VAL;
+        }
+
+        break;
+      case this.character === CsspDictionary.Syntax.ARG_SEPARATOR ||
+        this.character === CsspDictionary.Syntax.RPAR:
+        type = CsspDictionary.Types.ARG;
+        break;
+
+      default:
+        console.log(JSON.stringify({ char: this.character }));
     }
 
     this.addToken(type, prop, ln, col);
@@ -154,7 +188,8 @@ class CsspLexer {
       this.character !== null &&
       this.character !== CsspDictionary.Syntax.VAL_EQ &&
       this.character !== CsspDictionary.Syntax.STATEMENT_END &&
-      this.character !== CsspDictionary.Syntax.RPAR
+      this.character !== CsspDictionary.Syntax.RPAR &&
+      !WHITESPACE.includes(this.character)
     ) {
       varDec += this.character;
       this.next();

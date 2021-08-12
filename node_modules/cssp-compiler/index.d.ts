@@ -1,3 +1,3 @@
-declare module "cssp-compiler"{
-     export function compile(source:String):String;     
+declare namespace compiler {
+  export function compile(source: String): String;
 }
