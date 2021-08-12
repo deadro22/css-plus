@@ -81,7 +81,10 @@ class CsspInterpreter {
             ? `${nm} {\n${styleOutput}}`
             : selectorPrefix + ` {\n${styleOutput}}`;
 
-        this.blocks.push(selector);
+        if (styleOutput !== "") {
+          this.blocks.push(selector);
+        }
+
         this.stack.push(selectorPrefix);
 
         $node.children && $node.children.map(this.visit);
